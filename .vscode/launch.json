@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-JsonProcessorAdminApplication<json-processor-admin>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.broker.jsonprocessoradmin.JsonProcessorAdminApplication",
+            "projectName": "json-processor-admin",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
