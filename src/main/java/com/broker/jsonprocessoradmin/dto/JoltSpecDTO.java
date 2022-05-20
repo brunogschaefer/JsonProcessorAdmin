@@ -4,15 +4,23 @@ import java.util.Map;
 
 import com.broker.jsonprocessoradmin.entities.JoltSpec;
 import com.broker.jsonprocessoradmin.enums.JoltOperationEnum;
+import com.broker.jsonprocessoradmin.util.SpecMapDeserializer;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class JoltSpecDTO {
 
     private String id;
     private JoltOperationEnum operation;
+
+    @JsonProperty("spec")
+    @JsonDeserialize(using = SpecMapDeserializer.class)
     private Map<String, Object> spec;
 
     public JoltSpecDTO() {}
 
+    @JsonCreator
     public JoltSpecDTO(String id, JoltOperationEnum operation, Map<String, Object> spec) {
         this.id = id;
         this.operation = operation;

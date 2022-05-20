@@ -38,4 +38,8 @@ public class JoltSpecController {
         JoltSpecDTO spec = services.insert(dto);
         return ResponseEntity.ok().body(spec);
     }
+
+    //put
+
+    //delete
 }
