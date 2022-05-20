@@ -13,6 +13,7 @@ public class JoltSpec {
 
     @Id
     private String id;
+    private String name;
     private JoltOperationEnum operation;
     private Map<String, Object> spec;
 
@@ -20,12 +21,14 @@ public class JoltSpec {
 
     public JoltSpec (JoltSpecDTO dto) {
         this.id = dto.getId();
+        this.name = dto.getName();
         this.operation = dto.getOperation();
         this.spec = dto.getSpec();
     }
 
-    public JoltSpec (String id, JoltOperationEnum operation) {
+    public JoltSpec (String id, String name, JoltOperationEnum operation) {
         this.id = id;
+        this.name = name;
         this.operation = operation;
     }
 
@@ -35,6 +38,14 @@ public class JoltSpec {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public JoltOperationEnum getOperation() {

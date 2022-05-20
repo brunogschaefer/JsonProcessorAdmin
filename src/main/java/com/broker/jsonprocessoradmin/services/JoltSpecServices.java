@@ -30,9 +30,35 @@ public class JoltSpecServices {
     }
 
     @Transactional
+    public JoltSpecDTO findByName (String name) {
+        try {
+            JoltSpec spec = repository.findByName(name);
+            return new JoltSpecDTO(spec);
+        } catch (NullPointerException e) {
+            return null; // tratar exceção
+        }
+    }
+
+    @Transactional
     public JoltSpecDTO insert (JoltSpecDTO dto) {
         JoltSpec spec = new JoltSpec(dto);
+        spec = repository.insert(spec);
+        return new JoltSpecDTO(spec);
+    }
+
+    @Transactional
+    public JoltSpecDTO update (JoltSpecDTO dto) {
+        JoltSpec spec = repository.findById(dto.getId()).orElse(new JoltSpec(dto));
+        spec.setName(dto.getName());
+        spec.setOperation(dto.getOperation());
+        spec.setSpec(dto.getSpec());
         spec = repository.save(spec);
         return new JoltSpecDTO(spec);
+    }
+
+    @Transactional
+    public void delete (String id) {
+        JoltSpec spec = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("This spec doesn't exist"));
+        repository.delete(spec);
     }
 }
